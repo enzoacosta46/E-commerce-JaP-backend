@@ -1,0 +1,19 @@
+{
+  "name": "proyectobackend",
+  "version": "1.0.0",
+  "description": "Proyecto backend desarrollado para la Entrega 8 de Desarrollo Web en Jovenes a Programar",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
