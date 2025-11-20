@@ -1,16 +1,19 @@
-const express = require("express"); // Importa ExpressJS. Más info de Express en =>https://expressjs.com/es/starter/hello-world.html
+import express from "express"; // Importa ExpressJS. Más info de Express en =>https://expressjs.com/es/starter/hello-world.html
+import catsRoute from "./route/catsRoute.js";
+import productsRoute from "./route/productsRoute.js";
+import cartRoute from "./route/cartRoute.js";
 
 const app = express(); // Crea una instancia de ExpressJS
+const EXT_TYPE = ".json";
+app.use(express.json());
 
-const port = 3000;
+// Rutas
+app.use("/cats", catsRoute);
+app.use("/", productsRoute);
+app.use("/user_cart", cartRoute);
 
-app.use(express.json()); // Permite que el servidor analice el cuerpo de las peticiones como JSON
-
-app.get("/", (req, res) => {
-  // El primer parámetro SIEMPRE es asociado a la request (petición) y el segundo a la response (respuesta)
-  res.send("<h1>Bienvenid@ al servidor</h1>");
-});
-
-app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
+// Servidor
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
