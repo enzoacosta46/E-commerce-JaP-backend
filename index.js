@@ -2,9 +2,19 @@ import express from "express"; // Importa ExpressJS. Más info de Express en =>h
 import catsRoute from "./route/catsRoute.js";
 import productsRoute from "./route/productsRoute.js";
 import cartRoute from "./route/cartRoute.js";
+import cors from "cors";
 
 const app = express(); // Crea una instancia de ExpressJS
 const EXT_TYPE = ".json";
+
+app.use(
+  cors({
+    origin: ["http://127.0.0.1:5500", "http://localhost:5500"],
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type, Authorization",
+  })
+);
+
 app.use(express.json());
 
 // Rutas

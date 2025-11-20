@@ -7,12 +7,12 @@ export const obtenerCarritoPorUsuario = (req, res) => {
 
   try {
     if (!fs.existsSync(rutaArchivo)) {
-      return res.status(404).json({ error: "Producto no encontrado" });
+      return res.status(404).json({ error: "Usuario no encontrado" });
     }
 
-    const producto = JSON.parse(fs.readFileSync(rutaArchivo, "utf8"));
-    res.json(producto);
+    const usuario = JSON.parse(fs.readFileSync(rutaArchivo, "utf8"));
+    res.json(usuario);
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener el producto" });
+    res.status(500).json({ error: "Error al obtener el usuario" });
   }
 };
