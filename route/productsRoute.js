@@ -6,9 +6,9 @@ import {
 const router = express.Router();
 
 // pruducts/id.json
-router.get("/products/:PRODUCTS_ID", obtenerProductos);
+router.get("/:PRODUCTS_ID", obtenerProductos);
 
-// products_comments/ID.json
-router.get("/products_comments/:PRODUCTS_ID", obtenerComentariosPorProducto);
+// products/comments/ID.json
+router.get("/comments/:PRODUCTS_ID", obtenerComentariosPorProducto);
 
 export default router;

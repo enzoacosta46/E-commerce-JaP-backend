@@ -4,6 +4,7 @@ import productsRoute from "./route/productsRoute.js";
 import cartRoute from "./route/cartRoute.js";
 import userRoute from "./route/userRoute.js";
 import cors from "cors";
+import authMiddleware from "./middlewares/authMiddleware.js";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -22,10 +23,17 @@ app.use(
 app.use(express.json());
 
 // Rutas
-app.use("/cats", catsRoute);
-app.use("/", productsRoute);
-app.use("/user_cart", cartRoute);
 app.use("/", userRoute);
+
+// Middleware de autenticación
+app.use("/products", authMiddleware);
+app.use("/products", productsRoute);
+
+app.use("/cats", authMiddleware);
+app.use("/cats", catsRoute);
+
+app.use("/user_cart", authMiddleware);
+app.use("/user_cart", cartRoute);
 
 // Servidor
 const PORT = 3000;
