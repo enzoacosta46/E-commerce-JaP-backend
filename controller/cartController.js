@@ -19,9 +19,12 @@ export const obtenerCarritoPorUsuario = (req, res) => {
 };
 
 export const guardarCarritoPorUsuario = async (req, res) => {
-  const { Carrito_JSON } = req.body;
+  const Carrito_JSON = req.body.data;
+  console.log(req.body.data);
+  console.log("Datos recibidos para guardar el carrito:", Carrito_JSON);
   //Validar
   if (!Carrito_JSON) {
+    console.log("Faltan parámetros: Carrito_JSON");
     return res
       .status(400)
       .json({ error: "Faltan parámetros", enviaste: req.body });
